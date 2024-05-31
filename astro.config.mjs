@@ -7,7 +7,7 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://openise.github.io',
-  //base: '/my-repo',
+  base: '/astro-openise-jp',
 
   integrations: [
     preact(), 
