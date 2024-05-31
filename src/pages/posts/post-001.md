@@ -7,5 +7,3 @@ tags: ["mac-mini"]
 ---
 
 - [Mac mini \- Apple（日本）](https://www.apple.com/jp/mac-mini/)
-
-
