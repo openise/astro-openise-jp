@@ -1,6 +1,6 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: AstroをGitHub Pagesにデプロイ
+author: openise.jp
 description: "Astro公式AstroをGitHub Pagesにデプロイ"
 pubDate: 2024-05-30
 tags: ["astro", "github"]

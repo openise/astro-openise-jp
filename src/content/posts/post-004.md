@@ -1,6 +1,6 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: ブログチュートリアル
+author: openise.jp
 description: "Astro公式のブローグチュートリアル"
 pubDate: 2024-05-31
 tags: ["astro", "blog"]

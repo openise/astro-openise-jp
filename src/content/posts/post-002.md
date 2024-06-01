@@ -1,6 +1,6 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: さくらインターネット
+author: openise.jp
 description: "さくらインターネットのメールボックス"
 pubDate: 2024-05-29
 tags: ["astro", "sakura-internet"]
