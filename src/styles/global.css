@@ -1,95 +1,73 @@
-html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
+html {
+  overflow-y: auto;
+  color-scheme: light;
+  scroll-padding-top: 100px;
 }
 
 html.dark {
-  background-color: #0d0950;
-  color: #fff;
+  color-scheme: dark;
 }
 
-.dark .nav-links a {
-  color: #fff;
+html,
+body {
+  @apply size-full;
 }
 
-* {
-  box-sizing: border-box;
+body {
+  @apply flex flex-col;
+  @apply bg-neutral-100 dark:bg-neutral-900;
+  @apply text-black/75 dark:text-white/75;
 }
 
-h1 {
-  margin: 1rem 0;
-  font-size: 2rem;
+header {
+  @apply fixed left-0 right-0 top-0 z-20 py-1;
+  @apply bg-neutral-100/75 dark:bg-neutral-900/75;
+  @apply saturate-200 backdrop-blur-sm;
 }
 
-a {
-  color: #ff2a2a;
+main {
+  @apply flex-1 py-12;
 }
 
-/* ナビゲーションのスタイル */
-.hamburger {
-  padding-right: 20px;
-  cursor: pointer;
+footer {
+  @apply py-1 text-sm;
 }
 
-.hamburger .line {
-  display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: #ff9776;
+article {
+  @apply prose prose-neutral max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto prose-li:m-0.5;
+  @apply prose-headings:text-black prose-headings:dark:text-white;
 }
 
-.nav-links {
-  width: 100%;
-  top: 5rem;
-  left: 48px;
-  background-color: #ff9776;
-  display: none;
-  margin: 0;
-}
-
-.nav-links a {
-  display: block;
-  text-align: center;
-  padding: 10px 0;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-  background-color: #ff9776;
-}
-
-.expanded {
-  display: unset;
-}
-
-@media screen and (min-width: 636px) {
-  .nav-links {
-    margin-left: 5em;
-    display: block;
-    position: static;
-    width: auto;
-    background: none;
+@layer utilities {
+  article a {
+    @apply text-current underline underline-offset-[3px];
+    @apply decoration-black/30 dark:decoration-white/30;
+    @apply transition-colors duration-300 ease-in-out;
   }
-
-  .nav-links a {
-    display: inline-block;
-    padding: 15px 20px;
-  }
-  
-  .hamburger {
-    display: none;
+  article a:hover {
+    @apply text-black dark:text-white;
+    @apply decoration-black/50 dark:decoration-white/50;
   }
 }
+
+.animate {
+  @apply -translate-y-3 opacity-0;
+  @apply transition-all duration-300 ease-out;
+}
+
+.animate.show {
+  @apply translate-y-0 opacity-100;
+}
+
+html #back-to-top {
+  @apply pointer-events-none opacity-0;
+}
+
+html.scrolled #back-to-top {
+  @apply pointer-events-auto opacity-100;
+}
+

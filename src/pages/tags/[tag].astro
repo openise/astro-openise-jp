@@ -1,11 +1,15 @@
 ---
+import Layout from '@layouts/Layout.astro';
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+
 import { getCollection } from "astro:content";
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import BlogPost from '../../components/BlogPost.astro';
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("posts");
+  const allPosts = (await getCollection("blog"))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag));
     return {
@@ -18,9 +22,22 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
-<BaseLayout pageTitle={tag}>
-  <p>{tag}のタグが付いた記事</p>
-  <ul>
-    { posts.map((post) => <BlogPost url={`/astro-openise-jp/posts/${post.slug}/`} title={post.data.title} />) }
-  </ul>
-</BaseLayout>
+<Layout title={tag} description=`[{tag}]のタグが付いた記事``>
+  <Container>
+    <div class="space-y-10">
+      <section  class="animate space-y-4">
+        <div class="animate font-semibold text-black dark:text-white">
+          [{tag}] のタグが付いた記事
+        </div>
+        <div>
+        <ul class="not-prose flex flex-col gap-4">
+          {posts.map((post) => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </Container>
+</Layout>

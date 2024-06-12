@@ -1,40 +1,43 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Card from '../components/Card.astro';
-import Greeting from '../components/Greeting';
-const pageTitle = "openise.jp";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import SocialMediaLinks from "@components/SocialMediaLinks.astro";
+import Link from "@components/Link.astro";
+import { SITE, HOME } from "@consts";
+
+import { getCollection } from "astro:content";
+const blog = (await getCollection("blog"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 ---
-<BaseLayout pageTitle={pageTitle}>
-  <h2>openise.jpのホームページ</h2>
-  <Greeting client:load messages={["どうも", "こんにちは", "初めまして", "ようこそ"]} />
-  <ul role="list" class="link-card-grid">
-    <Card
-      href="/astro-openise-jp/blog/"
-      title="/BLOG"
-      body="ブログ投稿一覧"
-    />
-    <Card
-      href="/astro-openise-jp/tags/"
-      title="/TAGS"
-      body="タグ一覧"
-    />
-    <Card
-    href="https://docs.astro.build/ja/getting-started/"
-    title="Documentation"
-    body="Learn how Astro works and explore the official API docs."
-    />
-    <Card
-      href="https://astro.build/themes/"
-      title="Themes"
-      body="Explore a galaxy of community-built starter themes."
-    />
-  </ul>
-  <style>
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
-  }
-</style>
-</BaseLayout>
+<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <h1 class="animate font-semibold text-black dark:text-white">
+      openise.jp へようこそ
+    </h1>
+    <section>
+      <article class="space-y-1">
+        <span class="animate">
+          <SocialMediaLinks />
+        </span>
+      </article>
+    </section>
+
+    <section class="animate space-y-1">
+      <div class="flex flex-wrap items-center justify-between gap-y-2">
+        <h2 class="font-semibold text-black dark:text-white">最近の投稿</h2>
+        <Link href="/astro-openise-jp/blog"> すべての記事 </Link>
+      </div>
+      <ul class="not-prose flex flex-col gap-2">
+        {
+          blog.map((post) => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </Container>
+</Layout>

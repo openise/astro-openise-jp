@@ -1,15 +1,18 @@
 ---
-import Social from './Social.astro';
+import { siteMeta } from '@consts';
+import Container from "@components/Container.astro";
+import ThemeToggle from './ThemeIcon.astro';
+const year = new Date().getFullYear();
 ---
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
-
-<footer>
-  <Social platform="github" username="openise" />
-  <Social platform="X" username="openisejp" />
+<footer class="animate">
+  <Container>
+    <div class="flex items-center justify-between">
+			<div>
+				&copy; {year} • {siteMeta.author}
+			</div>
+      <div class="flex flex-wrap items-center gap-1.5">
+        <ThemeToggle />  
+      </div> 
+    </div>
+  </Container>
 </footer>
