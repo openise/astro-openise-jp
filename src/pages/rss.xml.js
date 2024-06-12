@@ -11,7 +11,7 @@ export async function GET(context) {
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
-      link: `/astro-openise-jp/blog/${post.slug}/`,
+      link: `/blog/${post.slug}/`,
     })),
     customData: `<language>ja-jp</language>`,
   });

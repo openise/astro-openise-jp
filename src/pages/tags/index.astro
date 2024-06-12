@@ -17,7 +17,7 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
         <p 
           class="m-1 p-2 rounded-lg border-dotted"
         >
-          <a href={`/astro-openise-jp/tags/${tag}`}>{tag}</a></p>
+          <a href={`/tags/${tag}`}>{tag}</a></p>
       ))}
     </div>
   </Container>

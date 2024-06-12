@@ -83,19 +83,19 @@ export const siteMeta: SiteMeta = {
 export const NAV_LINKS: Array<{ title: string, path: string }> = [
   {
     title: "/HOME",
-    path: `${RepoPath}/`,
+    path: `/`,
   },
   {
     title: "/BLOG",
-    path: `${RepoPath}/blog`,
+    path: `/blog`,
   },
   {
     title: "/TAGS",
-    path: `${RepoPath}/tags`,
+    path: `/tags`,
   },
   {
     title: "/ABOUT",
-    path: `${RepoPath}/about`
+    path: `/about`
   }
 ];
 
@@ -144,6 +144,6 @@ export const socialLinks: Array<SocialLink> = [
   {
     icon: "mdi:rss",
     friendlyName: "rss",
-    link: "/astro-openise-jp/rss.xml"
+    link: "/rss.xml"
   }
 ];
