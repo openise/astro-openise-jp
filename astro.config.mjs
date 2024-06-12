@@ -9,7 +9,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://openise.github.io',
-  base: '/astro-openise-jp',
+  //base: '/astro-openise-jp',
   integrations: [preact(), expressiveCode({
     plugins: [pluginLineNumbers()]
   }), tailwind(), icon()]
