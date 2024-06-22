@@ -1,5 +1,5 @@
 ---
-title: Astro で tailwindcss / typography を使用する
+title: "Astro で tailwindcss / typography を使用する"
 description:  "Astro で tailwindcss / typography を使用する"
 date: "2024-06-02"
 tags: ["astro", "tailwindcss", "typography"]
